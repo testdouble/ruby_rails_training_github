@@ -13,10 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_02_21_052836) do
 
   create_table "actors", force: :cascade do |t|
-    t.integer "movie_id"
     t.string "name"
     t.integer "facebook_likes"
-    t.index ["movie_id"], name: "index_actors_on_movie_id"
   end
 
   create_table "movies", force: :cascade do |t|
