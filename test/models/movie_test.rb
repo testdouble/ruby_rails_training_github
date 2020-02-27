@@ -46,4 +46,9 @@ class MovieTest < ActiveSupport::TestCase
   # star_trek_movies = Movie.all.select { |movie| movie.title =~ /star trek/i }
   # star_trek_likes = star_trek_movies.map(&:facebook_likes).reduce(&:+)
 
+  # One solution for Exercise 4 (see if you can find more!)
+  #
+  # movies_with_possible_train_keyword = Movie.where("plot_keywords like '%train'")
+  # movies = movies_with_possible_train_keyword.select { |movie| movie.plot_keywords.split('|').include?('train') }
+  # movies.map(&:title)
 end
