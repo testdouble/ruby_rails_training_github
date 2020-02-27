@@ -25,4 +25,15 @@ class MovieTest < ActiveSupport::TestCase
 
     assert_nil year
   end
+
+  test 'can count movies by a minimum number of facebook likes' do
+    Movie.create(title: 'The first movie', facebook_likes: 101)
+    Movie.create(title: 'The second movie', facebook_likes: 101)
+    Movie.create(title: 'The third movie', facebook_likes: 100)
+    Movie.create(title: 'The fourth movie', facebook_likes: 99)
+
+    likes = Movie.count_by_minimum_facebook_likes(100)
+
+    assert_equal 2, likes
+  end
 end
