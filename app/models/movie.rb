@@ -1,5 +1,6 @@
 class Movie < ApplicationRecord
   validates_presence_of :title
+  belongs_to :director
 
   def self.year_released(title)
     Movie.find_by(title: title)&.year
