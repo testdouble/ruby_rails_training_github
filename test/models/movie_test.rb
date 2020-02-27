@@ -36,4 +36,14 @@ class MovieTest < ActiveSupport::TestCase
 
     assert_equal 2, likes
   end
+
+  # Useful console queries for Exercise 3:
+  # Movie.where("title like '%star trek%'").map { |movie| movie.facebook_likes }.sum
+  # Movie.where("title like '%star wars%'").map(&:facebook_likes).sum # shorthand version using &: syntax
+  # Movie.where("title like '%star wars%'").sum(:facebook_likes) # shortest version using rails' sum method
+  #
+  # or do it in ruby:
+  # star_trek_movies = Movie.all.select { |movie| movie.title =~ /star trek/i }
+  # star_trek_likes = star_trek_movies.map(&:facebook_likes).reduce(&:+)
+
 end
