@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_225432) do
+ActiveRecord::Schema.define(version: 2020_02_27_230314) do
 
   create_table "directors", force: :cascade do |t|
     t.string "name"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2020_02_27_225432) do
     t.integer "facebook_likes"
     t.string "year"
     t.string "plot_keywords"
-    t.string "director"
+    t.integer "director_id"
+    t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
+  add_foreign_key "movies", "directors"
 end

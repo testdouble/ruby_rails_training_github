@@ -6,5 +6,6 @@ class DirectorTest < ActiveSupport::TestCase
 
     assert director.name, "Bong Joon-ho"
     assert director.age, 50
+    assert director.movies.count, 0
   end
 end
