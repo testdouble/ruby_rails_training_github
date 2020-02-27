@@ -1,0 +1,18 @@
+<%= form_with model: movie do |f| %>
+  <div>
+    Title: <%= f.text_field :title %>
+  </div>
+  <div>
+    Director: <%= f.text_field :director %>
+  </div>
+  <div>
+    Plot Keywords: <%= f.text_field :plot_keywords, size: 100 %>
+  </div>
+  <div>
+    Facebook Likes: <%= f.text_field :facebook_likes %>
+  </div>
+  <div>
+    Year: <%= f.text_field :year %>
+  </div>
+  <%= f.submit "Submit" %>
+<% end %>
