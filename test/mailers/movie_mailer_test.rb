@@ -9,5 +9,11 @@ class MovieMailerTest < ActionMailer::TestCase
     assert_emails 1 do
       email.deliver_now
     end
+
+    assert_equal ['kevin@testdouble.com'], email.to
+    assert_equal ['themovieapp@example.com'], email.from
+    assert_match /My Movie/, email.subject
+    assert_match /My Movie/, email.body.to_s
+    assert_match /Kevin Baribeau/, email.body.to_s
   end
 end
