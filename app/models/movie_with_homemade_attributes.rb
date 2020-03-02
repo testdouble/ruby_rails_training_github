@@ -12,15 +12,9 @@ class MovieWithHomemadeAttributes
     raw_row[attr.to_s]
   end
 
-  def method_missing(method, *args, &block)
-    if [:title, :plot_keywords].include?(method)
+  [:title, :plot_keywords].each do |method|
+    define_method(method) do
       read_attribute(method)
-    else
-      super
     end
-  end
-
-  def respond_to?(sym)
-    [:title, :plot_keywords].include?(method) || super
   end
 end
