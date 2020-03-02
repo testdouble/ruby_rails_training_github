@@ -4,7 +4,7 @@ class MoviesSystemTest < ApplicationSystemTestCase
   test "visiting the show" do
     movie = create(:movie)
 
-    visit "/movies/#{movie.id}"
+    visit movie_path(movie)
 
     assert_text movie.title
     assert_text movie.director.name
