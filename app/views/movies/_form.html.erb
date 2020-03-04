@@ -3,7 +3,9 @@
     Title: <%= f.text_field :title %>
   </div>
   <div>
-    Director: <%= f.text_field :director %>
+    <%= f.fields_for :director do |ff| %>
+      Director <%= ff.text_field :name %>
+    <% end %>
   </div>
   <div>
     Plot Keywords: <%= f.text_field :plot_keywords, size: 100 %>

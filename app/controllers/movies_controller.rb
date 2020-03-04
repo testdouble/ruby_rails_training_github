@@ -11,8 +11,16 @@ class MoviesController < ApplicationController
   end
 
   def create
-    new_movie = Movie.create(movie_form_params)
+    new_director = Director.create!(
+      name: params[:movie][:director][:name],
+    )
+    new_movie = Movie.create!(
+      movie_form_params.merge(
+        director: new_director,
+      ),
+    )
 
+    flash[:notice] = "Movie #{new_movie.title} created successfully!"
     redirect_to movie_path(new_movie.id)
   end
 
