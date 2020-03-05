@@ -2,7 +2,7 @@ require 'test_helper'
 
 class MovieTest < ActiveSupport::TestCase
   test "movie is valid with a title" do
-    movie = Movie.new(title: "Parasite", director: "Bong Joon-ho")
+    movie = Movie.new(title: "Parasite", director: Director.new(name: "Bong Joon-ho"))
     assert movie.title, "Parasite"
     assert movie.director, "Bong Joon-ho"
   end
@@ -13,7 +13,7 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   test 'can find what year a movie was released' do
-    Movie.create(title: 'My Movie', year: '2020')
+    Movie.create(title: 'My Movie', year: '2020', director: Director.new(name: 'Kevin'))
 
     year = Movie.year_released('My Movie')
 
@@ -27,10 +27,10 @@ class MovieTest < ActiveSupport::TestCase
   end
 
   test 'can count movies by a minimum number of facebook likes' do
-    Movie.create(title: 'The first movie', facebook_likes: 101)
-    Movie.create(title: 'The second movie', facebook_likes: 101)
-    Movie.create(title: 'The third movie', facebook_likes: 100)
-    Movie.create(title: 'The fourth movie', facebook_likes: 99)
+    Movie.create(title: 'The first movie', facebook_likes: 101, director: Director.new(name: 'Kevin'))
+    Movie.create(title: 'The second movie', facebook_likes: 101, director: Director.new(name: 'Kevin'))
+    Movie.create(title: 'The third movie', facebook_likes: 100, director: Director.new(name: 'Kevin'))
+    Movie.create(title: 'The fourth movie', facebook_likes: 99, director: Director.new(name: 'Kevin'))
 
     likes = Movie.count_by_minimum_facebook_likes(100)
 
