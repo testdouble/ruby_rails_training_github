@@ -51,4 +51,12 @@ class MovieTest < ActiveSupport::TestCase
   # movies_with_possible_train_keyword = Movie.where("plot_keywords like '%train'")
   # movies = movies_with_possible_train_keyword.select { |movie| movie.plot_keywords.split('|').include?('train') }
   # movies.map(&:title)
+
+  test "creating a Movie sends a new movie email" do
+    ActionMailer::Base.deliveries.clear
+
+    Movie.create!(title: 'My Movie', director: Director.create!(name: 'Kevin Baribeau'))
+
+    assert_operator ActionMailer::Base.deliveries.size, :>=, 1
+  end
 end
